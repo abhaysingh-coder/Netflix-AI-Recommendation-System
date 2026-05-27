@@ -128,7 +128,7 @@ python manage.py runserver
 
 ## Abhay Singh
 
-- Email: me.abhaysingh13@gmail.com
+- Email: srinetabhaysingh14@gmail.com
 - Location: Lucknow, Uttar Pradesh, India
 
 ---

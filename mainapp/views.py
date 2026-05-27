@@ -7,18 +7,23 @@ import gdown
 import os
 
 # Create Functions
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, 'similarity_matrix.pkl')
+DATA_PATH = os.path.join(BASE_DIR, 'Data.csv')
+
 def load_model():
     try:
-        MODEL_PATH = 'similarity_matrix.pkl'
         if not os.path.exists(MODEL_PATH):
-            url = 'https://drive.usercontent.google.com/download?id=1aktkGD5PzU_somIZkwkh03EZBTs60s6o&export=download&authuser=1&confirm=t&uuid=3e43db55-0a71-444f-93c2-4c00a7d6dae1&at=AAINaILaiKUHKAofL6cGyjLMQ3Vg:1779919021088'
+            url = 'https://drive.usercontent.google.com/download?id=1aktkGD5PzU_somIZkwkh03EZBTs60s6o&export=download&authuser=1&confirm=t&uuid=22220a11-5386-4f06-8613-bd28bf8349e8&at=AAINaII-tWCEiglbqYKspBTwn6Xh:1779919463795'
             gdown.download(url, MODEL_PATH, quiet=False)
-            similarity_matrix = joblib.load(MODEL_PATH)
-        data = pd.read_csv('Data.csv')
-        return similarity_matrix, data
-    except Exception as E:
-        return render('error.html', {'error' : E })
-similarity_matrix, data = load_model()
+        similarity_matrix = joblib.load(MODEL_PATH)
+        data = pd.read_csv(DATA_PATH)
+        return similarity_matrix, data, None
+    except Exception as e:
+        print("Model loading error:", e)
+        return None, None, e
+similarity_matrix, data, model_error = load_model()
 
 def recommend(matches):
     movie_index = matches.index[0]

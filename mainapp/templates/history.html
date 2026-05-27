@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<section class="history-page">
+
+  <div class="container">
+
+    <div class="history-header text-center">
+      <p class="small-title">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        Recommendation History
+      </p>
+      <h1>Your Recent Movie Searches</h1>
+      <p> View previously searched movies and recommendation activity from your Netflix AI system.</p>
+    </div>
+    
+    <div class="history-stats-row">
+      <div class="history-stat-card">
+        <i class="fa-solid fa-magnifying-glass"></i>
+          <h3>{% if count > 25 %} 25+ {% else %} {{ count }} {% endif %}</h3>
+        <p>Total Searches</p>
+      </div>
+      <div class="history-stat-card">
+        <i class="fa-solid fa-film"></i>
+        <h3>{% if count >= 11 %} 100+ {% else %} {% widthratio count 1 10 %} {% endif %}</h3>
+        <p>Movies Recommended</p>
+      </div>
+      <div class="history-stat-card">
+        <i class="fa-solid fa-star"></i>
+        <h3>AI</h3>
+        <p>Smart Suggestions</p>
+      </div>
+      <div class="history-stat-card">
+        <i class="fa-solid fa-database"></i>
+        <h3>Dataset</h3>
+        <p>Movie and TV show.</p>
+      </div>
+    </div>
+
+    <div class="history-section-title">
+      <div>
+        <p>Recent Activity</p>
+        <h2>Search History</h2>
+      </div>
+      <a href="{% url 'Recommendation' %}" class="btn history-btn">Search Again</a>
+    </div>
+
+      {% if history %}
+        {% for movie in history %}
+        <button class="btn history-collapse-btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#movie{{ movie.id }}" aria-expanded="false">
+          <div class="history-item">
+            <div class="history-icon">
+              <i class="fa-solid fa-film"></i>
+            </div>
+            <div class="history-content w-100">
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                  <h4>{{ movie.requested|title }}</h4>
+                  <p>Click below to view recommended movies.</p>
+                </div>
+                <span class="history-badge">{{ movie.rating }}</span>
+              </div>
+              <div class="collapse" id="movie{{ movie.id }}">
+                <div class="history-collapse-card">
+                  <ul>
+                    <li>{{ movie.rec_1|title }}</li>
+                    <li>{{ movie.rec_2|title }}</li>
+                    <li>{{ movie.rec_3|title }}</li>
+                    <li>{{ movie.rec_4|title }}</li>
+                    <li>{{ movie.rec_5|title }}</li>
+                    <li>{{ movie.rec_6|title }}</li>
+                    <li>{{ movie.rec_7|title }}</li>
+                    <li>{{ movie.rec_8|title }}</li>
+                    <li>{{ movie.rec_9|title }}</li>
+                    <li>{{ movie.rec_10|title }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>  
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+</section>
+{% endblock %}

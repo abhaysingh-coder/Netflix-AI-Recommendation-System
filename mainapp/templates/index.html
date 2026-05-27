@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<section class="home-page">
+
+  <div id="netflixCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500" data-bs-pause="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#netflixCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#netflixCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#netflixCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-bg bg-one">
+          <div class="overlay"></div>
+          <div class="container-fluid px-lg-5">
+            <div class="row align-items-center min-vh-100">
+              <div class="col-lg-6 hero-content">
+                <p class="small-title">
+                  <i class="fa-solid fa-film"></i>
+                  AI Recommendation Engine
+                </p>
+                <h1>Discover Amazing Movies Instantly</h1>
+                <p class="hero-desc">
+                  Get personalized movie recommendations using
+                  machine learning, similarity matrix and Netflix dataset.
+                </p>
+                <div class="hero-buttons">
+                  <a href="{% url 'Recommendation' %}" class="btn btn-red">Get Recommendation</a>
+                  <a href="{% url 'About' %}" class="btn btn-dark-outline">Learn More</a>
+                </div>
+              </div>
+              <div class="col-lg-6 d-none d-lg-block">
+                <div class="hero-poster-card">
+                  <h2>SCI-FI</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="carousel-bg bg-two">
+          <div class="overlay"></div>
+          <div class="container-fluid px-lg-5">
+            <div class="row align-items-center min-vh-100">
+              <div class="col-lg-6 hero-content">
+                <p class="small-title">
+                  <i class="fa-solid fa-brain"></i>
+                  Smart AI Recommendation
+                </p>
+                <h1>Recommendation Based On Similarity</h1>
+                <p class="hero-desc">
+                  Our recommendation system matches movies using
+                  AI models and advanced similarity algorithms.
+                </p>
+                <div class="hero-buttons">
+                  <a href="{% url 'Recommendation' %}"class="btn btn-red">Search Movies</a>
+                </div>
+              </div>
+              <div class="col-lg-6 d-none d-lg-block">
+                <div class="floating-card">
+                  <i class="fa-solid fa-clapperboard"></i>
+                  <h4>AI Powered</h4>
+                  <p>
+                    Smart Netflix recommendation system
+                    using machine learning.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="carousel-bg bg-three">
+          <div class="overlay"></div>
+          <div class="container-fluid px-lg-5">
+            <div class="row align-items-center min-vh-100">
+              <div class="col-lg-6 hero-content">
+                <p class="small-title">
+                  <i class="fa-solid fa-chart-line"></i>
+                  Netflix Dataset Analysis
+                </p>
+                <h1>Explore Movies & TV Shows</h1>
+                <p class="hero-desc">
+                  Analyze Netflix movies, genres,
+                  ratings and trends using data science and AI.
+                </p>
+                <div class="hero-buttons">
+                  <a href="{% url 'History' %}" class="btn btn-red">View History</a>
+                </div>
+              </div>
+              <div class="col-lg-6 d-none d-lg-block">
+                <div class="stats-box">
+                  <div>
+                    <h3>10K+</h3>
+                    <p>Movies</p>
+                  </div>
+                  <div>
+                    <h3>AI</h3>
+                    <p>Powered</p>
+                  </div>
+                  <div>
+                    <h3>Fast</h3>
+                    <p>Recommendation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="container">
+
+    <div class="section-title text-center">
+      <p>Why Choose Netflix AI</p>
+      <h2>Smart Recommendation Experience</h2>
+    </div>
+
+    <div class="row g-4 mt-5">
+
+      <div class="col-md-4">
+        <div class="info-card">
+          <i class="fa-solid fa-brain"></i>
+          <h4>AI Recommendation</h4>
+          <p>
+            Uses machine learning and similarity algorithms for intelligent
+            movie recommendations.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="info-card">
+          <i class="fa-solid fa-database"></i>
+          <h4>Netflix Dataset</h4>
+          <p>
+            Built using cleaned and analyzed Netflix movies and TV shows data.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="info-card">
+          <i class="fa-solid fa-chart-simple"></i>
+          <h4>Fast Discovery</h4>
+          <p>
+            Helps users discover related movies quickly with a smooth interface.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="trending-section">
+  <div class="container">
+
+    <div class="section-title text-center">
+      <p>Popular Categories</p>
+      <h2>Explore By Genre</h2>
+    </div>
+
+    <div class="row g-4 mt-5">
+      {% if rating %}
+        {% for rate in rating %}
+          <div class="col-md-3 col-sm-6">
+            <div class="category-card action-card rating-card-{{ forloop.counter }}">
+              <h3>{{ rate }}</h3>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

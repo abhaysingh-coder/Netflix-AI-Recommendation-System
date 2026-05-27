@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<section class="about-page">
+
+  <div class="container">
+
+    <div class="about-header text-center">
+      <p class="small-title">
+        <i class="fa-solid fa-circle-info"></i>
+        About Netflix AI
+      </p>
+
+      <h1>About This Recommendation System</h1>
+
+      <p>
+        Netflix AI is a movie recommendation system built using Django,
+        Python, Machine Learning, and Netflix dataset analysis.
+      </p>
+    </div>
+
+    <div class="row g-4 mt-5">
+
+      <div class="col-md-4">
+        <div class="about-card">
+          <i class="fa-solid fa-brain"></i>
+          <h4>Machine Learning</h4>
+          <p>
+            Uses similarity matrix logic to recommend movies related to the
+            user’s searched movie.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="about-card">
+          <i class="fa-solid fa-database"></i>
+          <h4>Netflix Dataset</h4>
+          <p>
+            Works with cleaned Netflix movies and TV shows data for better
+            recommendation results.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="about-card">
+          <i class="fa-solid fa-code"></i>
+          <h4>Django Project</h4>
+          <p>
+            Built with Django templates, static files, Bootstrap, CSS and
+            backend Python logic.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="about-detail-box">
+
+      <div class="row align-items-center g-4">
+
+        <div class="col-lg-6">
+          <p class="small-title">Project Overview</p>
+
+          <h2>How This System Works</h2>
+
+          <p>
+            The user enters a movie name. The system finds that movie in the
+            dataset, checks its similarity score with other movies, and returns
+            the most similar movie recommendations.
+          </p>
+
+          <p>
+            This project combines data cleaning, feature selection, similarity
+            matrix generation, Django views, templates, and a modern Netflix
+            style frontend.
+          </p>
+
+          <a href="{% url 'Recommendation' %}" class="btn btn-red mt-3">
+            Try Recommendation
+          </a>
+        </div>
+
+        <div class="col-lg-6">
+
+          <div class="about-process-list">
+
+            <div class="process-item">
+              <span>01</span>
+              <div>
+                <h4>Data Cleaning</h4>
+                <p>Remove null values, duplicates and unnecessary columns.</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <span>02</span>
+              <div>
+                <h4>Feature Creation</h4>
+                <p>Combine title, cast, director, country, rating and genre data.</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <span>03</span>
+              <div>
+                <h4>Similarity Matrix</h4>
+                <p>Calculate similarity between movies using vectorization.</p>
+              </div>
+            </div>
+
+            <div class="process-item">
+              <span>04</span>
+              <div>
+                <h4>Django Integration</h4>
+                <p>Load the model and show recommended movies on the website.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

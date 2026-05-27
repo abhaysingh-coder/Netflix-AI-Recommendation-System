@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix AI Recommendation</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'Image/favicon.ico' %}">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top main-navbar">
+  <div class="container-fluid px-lg-5">
+
+    <a class="navbar-brand brand-logo" href="#">
+      NETFLIX<span>AI</span>
+    </a>
+
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto nav-tabs-custom">
+        <li class="nav-item">
+          <a class="nav-link {% if tab == 'Index'%} active {% endif %}" href="{% url 'Index' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if tab == 'Recommendation'%} active {% endif %}" href="{% url 'Recommendation' %}">Recommendation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if tab == 'History'%} active {% endif %}" href="{% url 'History' %}">History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if tab == 'About'%} active {% endif %}" href="{% url 'About' %}">About</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+{% block main %}
+
+{% endblock %}
+
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- Left -->
+      <div class="col-lg-4">
+        <h3 class="footer-logo">
+          NETFLIX<span>AI</span>
+        </h3>
+        <p class="footer-text">
+          AI powered Netflix movie recommendation system built using
+          Django, Python and Machine Learning.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-lg-4">
+        <h4 class="footer-title">
+          Contact Information
+        </h4>
+        <div class="footer-contact">
+          <div>
+            <i class="fa-solid fa-user"></i>
+            <span>Abhay Singh</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-envelope"></i>
+            <span>me.abhaysingh13@gmail.com</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-phone"></i>
+            <span>+91 7985397219</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Lucknow, Uttar Pradesh, India</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="col-lg-4">
+        <h4 class="footer-title">
+          Social Media
+        </h4>
+        <div class="footer-social-links">
+          <a href="https://linkedin.com/in/abhay-singh-581423257" target="_blank">
+            <i class="fa-brands fa-linkedin-in"></i>
+            LinkedIn
+          </a>
+          <a href="https://github.com/abhaysingh-coder" target="_blank">
+            <i class="fa-brands fa-github"></i>
+            GitHub
+          </a>
+          <a href="https://www.instagram.com/abhay_singh_srinet_?igsh=enBnam1wODVuZTY2" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+            Instagram
+          </a>
+          <a href="https://x.com/AbhaySi19683415" target="_blank">
+            <i class="fa-brands fa-x-twitter"></i>
+            Twitter / X
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p> © 2026 Netflix AI Recommendation System | Developed By Abhay Singh</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<!-- External JS -->
+<script src="{% static 'JS/script.js' %}"></script>
+
+</body>
+</html>

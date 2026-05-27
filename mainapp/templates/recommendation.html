@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block main %}
+  <section class="recommendation-page">
+    
+    <div class="recommend-bg-overlay"></div>
+    <div class="container">
+      <div class="recommend-header text-center">
+        <p class="small-title">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          AI Movie Recommendation
+        </p>
+        <h1>Get Smart Movie Suggestions</h1>
+        <p>
+          Enter a movie name and the system will recommend similar movies using
+          Netflix dataset and machine learning similarity logic.
+        </p>
+      </div>
+      <div class="recommend-search-box">
+        <form method="post">
+          {% csrf_token %}
+          <div class="row g-3 align-items-center">
+            <div class="col-lg-9">
+              <div class="input-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="movie_name" placeholder="Enter movie name like Inception, Dark, Interstellar..." required>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn recommend-submit-btn w-100">Recommend</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="recommend-result-section">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+          <div>
+            <p class="result-label">Results</p>
+            <h2>Recommended Movies</h2>
+          </div>
+          <a href="{% url 'Index' %}" class="btn back-home-btn">Back Home</a>
+        </div>
+        <div class="row g-4">
+          {% if movies %}
+            {% for movie in movies %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="movie-result-card">
+                <div class="movie-poster">
+                  <i class="fa-solid fa-film"></i>
+                </div>
+                <div class="movie-content">
+                  <h4>{{ movie.title }}</h4>
+                  <p>Recommended by Netflix AI model.</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          {% else %}
+            <div class="col-12">
+              <div class="empty-result-box">
+                <i class="fa-solid fa-clapperboard"></i>
+                <h3>{{ message }}</h3>
+                <p>Search a movie above to generate AI based recommendations.</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="recommend-info-row">
+        <div class="recommend-info-card">
+          <i class="fa-solid fa-brain"></i>
+          <h4>AI Based</h4>
+          <p>Recommendation using similarity matrix.</p>
+        </div>
+        <div class="recommend-info-card">
+          <i class="fa-solid fa-database"></i>
+          <h4>Netflix Dataset</h4>
+          <p>Uses cleaned movie and TV show data.</p>
+        </div>
+        <div class="recommend-info-card">
+          <i class="fa-solid fa-bolt"></i>
+          <h4>Fast Result</h4>
+          <p>Get movie suggestions instantly.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+{% endblock %}

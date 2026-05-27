@@ -3,11 +3,17 @@ import joblib
 import numpy as np
 import pandas as pd
 from .models import *
+import gdown
+import os
 
 # Create Functions
 def load_model():
     try:
-        similarity_matrix = joblib.load('similarity_matrix.pkl')
+        MODEL_PATH = 'similarity_matrix.pkl'
+        if not os.path.exists(MODEL_PATH):
+            url = 'https://drive.usercontent.google.com/download?id=1aktkGD5PzU_somIZkwkh03EZBTs60s6o&export=download&authuser=1&confirm=t&uuid=3e43db55-0a71-444f-93c2-4c00a7d6dae1&at=AAINaILaiKUHKAofL6cGyjLMQ3Vg:1779919021088'
+            gdown.download(url, MODEL_PATH, quiet=False)
+            similarity_matrix = joblib.load(MODEL_PATH)
         data = pd.read_csv('Data.csv')
         return similarity_matrix, data
     except Exception as E:

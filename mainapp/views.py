@@ -15,7 +15,7 @@ DATA_PATH = os.path.join(BASE_DIR, 'Data.csv')
 def load_model():
     try:
         if not os.path.exists(MODEL_PATH):
-            url = 'https://drive.usercontent.google.com/download?id=1aktkGD5PzU_somIZkwkh03EZBTs60s6o&export=download&authuser=1&confirm=t&uuid=22220a11-5386-4f06-8613-bd28bf8349e8&at=AAINaII-tWCEiglbqYKspBTwn6Xh:1779919463795'
+            url = 'https://drive.usercontent.google.com/download?id=1aktkGD5PzU_somIZkwkh03EZBTs60s6o&export=download&authuser=1&confirm=t&uuid=0557a98e-5d67-45d6-a3c2-21a5ffd5a960&at=AAINaIIqW5LzSLutHKVlpnRydKfv:1779955511747'
             gdown.download(url, MODEL_PATH, quiet=False)
         similarity_matrix = joblib.load(MODEL_PATH)
         data = pd.read_csv(DATA_PATH)

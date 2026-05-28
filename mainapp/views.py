@@ -115,6 +115,7 @@ def load_collection(request):
     try:
         row, col = data.shape
         for i in range(row):
+            data.iloc[i] = data.iloc[i].fillna("Not Given")
             CollectionMovies.objects.create(Show_ID = data.iloc[i]['show_id'], Type = data.iloc[i]['type'], Title = data.iloc[i]['title'], Director = data.iloc[i]['director'], Country = data.iloc[i]['country'], Date_Added = data.iloc[i]['date_added'], Release_Year = data.iloc[i]['release_year'], Rating = data.iloc[i]['rating'], Duration = data.iloc[i]['duration'], Listed_In = data.iloc[i]['listed_in'])
         context = {
             'tab' : 'Collection'

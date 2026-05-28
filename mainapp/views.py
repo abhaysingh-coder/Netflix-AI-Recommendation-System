@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from .models import *
-import gdown
+import urllib.request
 import os
 
 # Create Functions
@@ -15,8 +15,8 @@ DATA_PATH = os.path.join(BASE_DIR, 'Data.csv')
 def load_model():
     try:
         if not os.path.exists(MODEL_PATH):
-            url = 'https://drive.usercontent.google.com/download?id=1aktkGD5PzU_somIZkwkh03EZBTs60s6o&export=download&authuser=1&confirm=t&uuid=0557a98e-5d67-45d6-a3c2-21a5ffd5a960&at=AAINaIIqW5LzSLutHKVlpnRydKfv:1779955511747'
-            gdown.download(url, MODEL_PATH, quiet=False)
+            url = 'https://huggingface.co/abhaysinghsrinet/similarity_matrix/resolve/main/similarity_matrix.pkl'
+            urllib.request.urlretrieve(url, MODEL_PATH)
         similarity_matrix = joblib.load(MODEL_PATH)
         data = pd.read_csv(DATA_PATH)
         return similarity_matrix, data, None

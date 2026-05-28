@@ -119,7 +119,7 @@ def load_collection(request):
         context = {
             'tab' : 'Collection'
         }
-        return render(request, 'load.html', context)
+        return redirect('Record')
     except Exception as e:
         return render(request, 'error.html', {'error': e})
     

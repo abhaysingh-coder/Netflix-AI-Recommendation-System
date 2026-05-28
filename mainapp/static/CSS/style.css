@@ -393,7 +393,6 @@ a {
 
 .movie-poster {
   height: 210px;
-  background: linear-gradient(135deg, #e50914, #240000);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1299,5 +1298,206 @@ img, video, iframe {
   .container-fluid {
     padding-left: 14px;
     padding-right: 14px;
+  }
+}
+/* ================= COLLECTION PAGE ================= */
+
+.collection-section{
+    padding-top: 140px;
+    padding-bottom: 80px;
+}
+
+.section-heading{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-heading h1{
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.section-heading p{
+    color: #9ca3af;
+    font-size: 1.1rem;
+}
+
+.collection-category{
+    margin-bottom: 70px;
+}
+
+.collection-category h2{
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border-left: 5px solid #e50914;
+    padding-left: 15px;
+}
+
+.collection-card{
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.collection-card:hover{
+    transform: translateY(-8px);
+    border-color: rgba(229,9,20,0.4);
+    box-shadow: 0 15px 40px rgba(229,9,20,0.15);
+}
+
+.collection-poster{
+    height: 220px;
+    background: linear-gradient(135deg,#e50914,#b20710);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collection-poster i{
+    font-size: 5rem;
+    color: #fff;
+}
+
+.collection-content{
+    padding: 20px;
+}
+
+.collection-content h4{
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.collection-content p{
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   COLLECTION PAGE
+========================= */
+
+.collection-page,
+.rating-movies-page {
+  min-height: 100vh;
+  padding: 150px 0 90px;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.96), rgba(0,0,0,0.82)),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1974&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+}
+
+.collection-header {
+  max-width: 900px;
+  margin: auto;
+}
+
+.collection-header h1 {
+  font-size: 58px;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.collection-header p {
+  color: #ccc;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.rating-link {
+  text-decoration: none;
+}
+
+.collection-rating-card {
+  height: 240px;
+  border-radius: 28px;
+  padding: 30px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: 0.35s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.collection-rating-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  z-index: 1;
+}
+
+.collection-rating-card i,
+.collection-rating-card h3,
+.collection-rating-card p {
+  position: relative;
+  z-index: 2;
+}
+
+.collection-rating-card i {
+  font-size: 42px;
+  margin-bottom: 18px;
+}
+
+.collection-rating-card h3 {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.collection-rating-card p {
+  color: #ddd;
+  margin: 0;
+}
+
+.collection-rating-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 24px 55px rgba(229,9,20,0.25);
+}
+
+/* Rating Card Colors */
+
+.rating-card-1{background: linear-gradient(135deg,#e50914,#3d0000);}
+
+.rating-card-2{background: linear-gradient(135deg,#4361ee,#14213d);}
+
+.rating-card-3{background: linear-gradient(135deg,#7209b7,#240046);}
+
+.rating-card-4{background: linear-gradient(135deg,#06d6a0,#003049);}
+
+.rating-card-5{background: linear-gradient(135deg,#ff006e,#3a0ca3);}
+
+.rating-card-6{background: linear-gradient(135deg,#f77f00,#6a040f);}
+
+.rating-card-7{background: linear-gradient(135deg,#3a86ff,#001845);}
+
+.rating-card-8{background: linear-gradient(135deg,#2ec4b6,#023047);}
+
+.rating-card-9{background: linear-gradient(135deg,#8338ec,#10002b);}
+
+.rating-card-10{background: linear-gradient(135deg,#ef233c,#2b2d42);}
+
+.rating-card-11{background: linear-gradient(135deg,#38b000,#004b23);}
+
+.rating-card-12{background: linear-gradient(135deg,#ff9f1c,#7b2cbf);}
+
+.rating-card-13{background: linear-gradient(135deg,#00b4d8,#03045e);}
+
+@media (max-width: 576px) {
+  .collection-page,
+  .rating-movies-page {
+    padding-top: 130px;
+  }
+
+  .collection-header h1 {
+    font-size: 34px;
   }
 }

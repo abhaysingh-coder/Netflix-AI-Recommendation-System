@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+  <section class="rating-movies-page">
+    <div class="container">
+      
+      <div class="collection-header text-center">
+        <p class="small-title">
+          <i class="fa-solid fa-film"></i>
+          Rating Collection
+        </p>
+        <h1>{{ rating }} Movies & Shows</h1>
+        <p>Movies and TV shows available under the {{ rating }} rating category.</p>
+        <a href="{% url 'Collection' %}" class="btn btn-red mt-3">Back To Collection</a>
+      </div>
+
+      <div class="row g-4 mt-5">
+        {% if movies %}
+          {% for movie in movies %}
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="movie-result-card">
+              <div class="movie-poster rating-card-{{ count }}">
+                <i class="fa-solid fa-film"></i>
+              </div>
+              <div class="movie-content">
+                <h4>{{ movie.Title|title }}</h4>
+                <p>{{ movie.Listed_In|default:"Netflix Content" }}</p>
+                <span class="history-badge">{{ movie.Rating }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-12">
+            <div class="empty-result-box">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <h3>No Movies Found</h3>
+              <p>No movies available for this rating.</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+  </section>
+{% endblock %}

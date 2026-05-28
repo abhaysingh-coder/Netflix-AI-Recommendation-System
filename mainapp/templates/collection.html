@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<section class="collection-page">
+
+  <div class="container">
+
+    <div class="collection-header text-center">
+      <p class="small-title">
+        <i class="fa-solid fa-layer-group"></i>
+        Netflix Collection
+      </p>
+      <h1>Browse Movies By Rating</h1>
+      <p>Select a rating category to explore movies and TV shows with the same Netflix rating.</p>
+      <a href="{% url 'Load_Collection' %}" class="btn btn-red mt-3">Load Collection</a>
+    </div>
+
+    <div class="row g-4 mt-5">
+      {% for rate in ratings %}
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <a href="{% url 'RatingMovies' rate %}" class="rating-link">
+          <div class="collection-rating-card rating-card-{{ forloop.counter }}">
+            <i class="fa-solid fa-star"></i>
+            <h3>{{ rate }}</h3>
+            <p>View all {{ rate }} movies</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

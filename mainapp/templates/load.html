@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block main %}
+    <section class="record-page">
+        <div class="container">
+            <div class="record-box">
+                <div class="record-header">
+                    <h1>Database Record Management</h1>
+                    <p>Manage Netflix movie collection records.</p>
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="record-count-card">
+                    <h2>{{ count }}</h2>
+                    <p>Total Records</p>
+                </div>
+
+                <div class="record-actions">
+                    <a href="{% url 'Load_Collection' %}" class="record-btn add-btn">
+                        <i class="fa-solid fa-database"></i>
+                        Add Records
+                    </a>
+                    <a href="{% url 'DeleteRecord' %}"
+                    class="record-btn delete-btn">
+                        <i class="fa-solid fa-trash"></i>
+                        Remove Records
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

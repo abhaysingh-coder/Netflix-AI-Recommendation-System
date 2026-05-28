@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import joblib
 import numpy as np
 import pandas as pd
 from .models import *
 import urllib.request
 import os
+from django.contrib import messages
 
 # Create Functions
 
@@ -110,6 +111,18 @@ def collection(request):
     except Exception as e:
         return render(request, 'error.html', {'error': e})
     
+def load_collection(request):
+    try:
+        row, col = data.shape
+        for i in range(row):
+            CollectionMovies.objects.create(Show_ID = data.iloc[i]['show_id'], Type = data.iloc[i]['type'], Title = data.iloc[i]['title'], Director = data.iloc[i]['director'], Country = data.iloc[i]['country'], Date_Added = data.iloc[i]['date_added'], Release_Year = data.iloc[i]['release_year'], Rating = data.iloc[i]['rating'], Duration = data.iloc[i]['duration'], Listed_In = data.iloc[i]['listed_in'])
+        context = {
+            'tab' : 'Collection'
+        }
+        return render(request, 'load.html', context)
+    except Exception as e:
+        return render(request, 'error.html', {'error': e})
+    
 def ratingmovies(request, rating):
     try:
         movies = CollectionMovies.objects.filter(Rating=rating)
@@ -122,3 +135,19 @@ def ratingmovies(request, rating):
         return render(request, 'rating.html', context)
     except Exception as e:
         return render(request, 'error.html', {'error': e})
+    
+def record(request):
+    count = CollectionMovies.objects.count()
+    context = {
+        'tab': 'Record',
+        'count': count
+    }
+    return render(request, 'load.html', context)
+
+def delete_record(request):
+    try:
+        CollectionMovies.objects.all().delete()
+        messages.success(request,'All records deleted successfully.')
+        return redirect('Record')
+    except Exception as e:
+        return render(request,'error.html',{'error': e})

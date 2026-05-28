@@ -27,5 +27,7 @@ urlpatterns = [
     path('History/', views.history, name='History'),
     path('Collection/', views.collection, name='Collection'),
     path('Collection/<str:rating>', views.ratingmovies, name='RatingMovies'),
-
+    path('Record/', views.record, name='Record'),
+    path('Load_Collection/', views.load_collection, name='Load_Collection'),
+    path('DeleteRecord/', views.delete_record, name='DeleteRecord'),
 ]

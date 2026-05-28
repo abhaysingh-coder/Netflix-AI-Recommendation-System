@@ -1537,3 +1537,93 @@ img, video, iframe {
     font-size: 34px;
   }
 }
+
+
+
+
+
+.record-page{
+    min-height: 100vh;
+    padding: 140px 0 80px;
+}
+
+.record-box{
+    max-width: 700px;
+    margin: auto;
+    background: #111827;
+    border-radius: 28px;
+    padding: 50px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.record-header{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.record-header h1{
+    color: white;
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.record-header p{
+    color: #9ca3af;
+    font-size: 17px;
+}
+
+.record-count-card{
+    background: linear-gradient(135deg,#e50914,#7f0000);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.record-count-card h2{
+    font-size: 70px;
+    color: white;
+    font-weight: 900;
+}
+
+.record-count-card p{
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+}
+
+.record-actions{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.record-btn{
+    min-width: 240px;
+    padding: 18px 24px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: 0.3s;
+}
+
+.add-btn{
+    background: linear-gradient(135deg,#10b981,#065f46);
+}
+
+.delete-btn{
+    background: linear-gradient(135deg,#ef4444,#7f1d1d);
+}
+
+.record-btn:hover{
+    transform: translateY(-5px);
+    color: white;
+}

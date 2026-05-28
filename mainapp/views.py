@@ -127,7 +127,6 @@ def ratingmovies(request, rating):
         movies = CollectionMovies.objects.filter(Rating=rating)
         count = ''
         context = {
-            'tab' : 'ratingmovies',
             'rating': rating,
             'movies': movies,
             'count' : list(CollectionMovies.objects.all().values_list('Rating', flat=True).distinct()).index(rating) + 1

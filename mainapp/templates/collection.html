@@ -15,22 +15,48 @@
       <p>Select a rating category to explore movies and TV shows with the same Netflix rating.</p>
     </div>
 
-    <div class="row g-4 mt-5">
-      {% for rate in ratings %}
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <a href="{% url 'RatingMovies' rate %}" class="rating-link">
-          <div class="collection-rating-card rating-card-{{ forloop.counter }}">
-            <i class="fa-solid fa-star"></i>
-            <h3>{{ rate }}</h3>
-            <p>View all {{ rate }} movies</p>
+    {% for filter, values in filter_data.items %}
+      <div class="rating-slider-wrapper mt-5">
+        <div class="collection-rating-card rating-card-{{ forloop.counter }}">
+          <div class="rating-inline-row">
+            <div class="rating-ribbon">
+              <i class="fa-solid fa-star"></i>
+              {{ filter|title }}
+            </div>
+            <div class="rating-card-content ps-2">
+              <h3>Browse By {{ filter|title }}</h3>
+              <p>Explore Netflix {{ filter|title }} categories</p>
+            </div>
+            <div class="rating-card-footer">
+              <a href="{% url 'FilterMovies' filter %}" class="rating-detail-btn">
+                Show All
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
-        </a>
+        </div>
+        <swiper-container class="ratingSwiper" loop="true"  grab-cursor="true" free-mode="true" mousewheel="true" autoplay-delay="2500" autoplay-disable-on-interaction="false" space-between="28" breakpoints='{"0": { "slidesPerView": 1 },"576": { "slidesPerView": 2 },"768": { "slidesPerView": 3 },"1200": { "slidesPerView": 4 }}'>
+          {% for rate in values %}
+          <swiper-slide>
+            <a href="{% url 'RatingMovies' filter rate %}" class="rating-link">
+              <div class="collection-rating-card rating-card-{{ forloop.counter }}">
+                <div class="rating-icon">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-card-content">
+                  <span class="rating-label">{{ filter|title }}</span>
+                  <h3>{{ rate }}</h3>
+                  <p>View all {{ rate }} movies</p>
+                </div>
+              </div>
+            </a>
+          </swiper-slide>
+          {% endfor %}
+        </swiper-container>
       </div>
-      {% endfor %}
-    </div>
+    {% endfor %}
 
   </div>
 
 </section>
-
 {% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<section class="collection-page rating-movies-page">
+
+  <div class="container">
+
+    <div class="collection-header text-center">
+      <p class="small-title">
+        <i class="fa-solid fa-film"></i>
+        {{ filter_name|title }} Collection
+      </p>
+
+      <h1>{{ filter_name|title }} Movies & Shows</h1>
+
+      <p>
+        <strong>{{ no }}</strong> items available under
+        <strong>{{ filter_name|title }}</strong>
+      </p>
+
+      <a href="{% url 'Collection' %}" class="btn btn-red mt-3">
+        <i class="fa-solid fa-arrow-left me-2"></i>
+        Back To Collection
+      </a>
+    </div>
+
+    <div class="row g-4 mt-5">
+
+      {% if movies %}
+        {% for movie in movies %}
+
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            <a href="{% url 'RatingMovies' filter_name movie %}" class="rating-link">
+              <div class="collection-rating-card rating-card-{% cycle '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' %}">
+
+                <div class="rating-icon">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+
+                <div class="rating-card-content">
+                  <span class="rating-label">{{ filter_name }}</span>
+                  <h3>{{ movie }}</h3>
+                  <p>View all {{ movie }} movies</p>
+                </div>
+
+              </div>
+            </a>
+          </div>
+
+        {% endfor %}
+      {% else %}
+
+        <div class="col-12">
+          <div class="empty-result-box">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <h3>No Movies Found</h3>
+            <p>No movies available for this category.</p>
+          </div>
+        </div>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

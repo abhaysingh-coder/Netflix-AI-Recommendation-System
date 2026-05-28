@@ -26,5 +26,6 @@ urlpatterns = [
     path('About/', views.about, name='About'),
     path('History/', views.history, name='History'),
     path('Collection/', views.collection, name='Collection'),
-    path('Collection/<str:rating>', views.ratingmovies, name='RatingMovies'),
+    path('Collection/<str:filter_name>', views.filtermovies, name='FilterMovies'),
+    path('Collection/<str:filter_name>/<str:rating>', views.ratingmovies, name='RatingMovies'),
 ]

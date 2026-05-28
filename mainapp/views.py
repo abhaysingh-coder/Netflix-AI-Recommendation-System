@@ -100,26 +100,45 @@ def history(request):
         return render(request, 'history.html', context)
     except Exception as e:
         return render(request, 'error.html', {'error': e})
-
+    
 def collection(request):
     try:
+        filters = ['type', 'director', 'country', 'release_year', 'rating']
+        filter_data = {}
+        for filter_name in filters:
+            values = (data[filter_name].dropna().astype(str).unique().tolist())
+            values = [v for v in values if v != "Not Given"]
+            filter_data[filter_name] = values[:20]
         context = {
-            'tab' : 'Collection',
-            'ratings': list(data['rating'].unique())
+            'tab': 'Collection',
+            'filter_data': filter_data
         }
         return render(request, 'collection.html', context)
     except Exception as e:
         return render(request, 'error.html', {'error': e})
-
-def ratingmovies(request, rating):
+    
+def filtermovies(request, filter_name):
     try:
-        movies = data[data["rating"] == rating].to_dict('records')
+        movies = list(data[filter_name].unique())
         no = len(movies)
         context = {
-            'rating': rating,
+            'filter_name' : filter_name,
+            'movies' : movies,
+            'no' :no
+        }
+        return render(request, 'filter.html', context)
+    except Exception as e:
+        return render(request, 'error.html', {'error': e})
+
+def ratingmovies(request, filter_name, rating):
+    try:
+        # e = data[data[filter_name] == rating].to_dict('records')
+        movies = data[data[filter_name] == rating].to_dict('records')
+        context = {
+            'rating': filter_name,
             'movies': movies,
-            'count' : list(data['rating'].unique()).index(rating) + 1,
-            'no' : no
+            'count' : list(data[filter_name].unique()).index(rating) + 1,
+            'no' : len(movies)
         }
         return render(request, 'rating.html', context)
     except Exception as e:

@@ -1514,29 +1514,17 @@ img, video, iframe {
 /* Rating Card Colors */
 
 .rating-card-1{background: linear-gradient(135deg,#e50914,#3d0000);}
-
 .rating-card-2{background: linear-gradient(135deg,#4361ee,#14213d);}
-
 .rating-card-3{background: linear-gradient(135deg,#7209b7,#240046);}
-
 .rating-card-4{background: linear-gradient(135deg,#06d6a0,#003049);}
-
 .rating-card-5{background: linear-gradient(135deg,#ff006e,#3a0ca3);}
-
 .rating-card-6{background: linear-gradient(135deg,#f77f00,#6a040f);}
-
 .rating-card-7{background: linear-gradient(135deg,#3a86ff,#001845);}
-
 .rating-card-8{background: linear-gradient(135deg,#2ec4b6,#023047);}
-
 .rating-card-9{background: linear-gradient(135deg,#8338ec,#10002b);}
-
 .rating-card-10{background: linear-gradient(135deg,#ef233c,#2b2d42);}
-
 .rating-card-11{background: linear-gradient(135deg,#38b000,#004b23);}
-
 .rating-card-12{background: linear-gradient(135deg,#ff9f1c,#7b2cbf);}
-
 .rating-card-13{background: linear-gradient(135deg,#00b4d8,#03045e);}
 
 @media (max-width: 576px) {

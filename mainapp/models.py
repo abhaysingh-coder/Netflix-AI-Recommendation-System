@@ -16,16 +16,3 @@ class RecommendationHistory(models.Model):
     rec_10 = models.CharField(100)
     created_at = models.DateTimeField(auto_now_add=True)
 
-class CollectionMovies(models.Model):
-    Show_ID = models.CharField(max_length=20)
-    Type = models.CharField(max_length=20)
-    Title = models.CharField(max_length=200)
-    Director = models.CharField(max_length=200, blank=True, null=True)
-    Country = models.CharField(max_length=100, blank=True, null=True)
-    Date_Added = models.CharField(max_length=50, blank=True, null=True)
-    Release_Year = models.IntegerField()
-    Rating = models.CharField(max_length=20)
-    Duration = models.CharField(max_length=20, blank=True, null=True)
-    Listed_In = models.CharField(max_length=300)
-    def __str__(self):
-        return self.Title

@@ -11,6 +11,7 @@
           Rating Collection
         </p>
         <h1>{{ rating }} Movies & Shows</h1>
+        <p>{{ no }} Movies Available</p>
         <p>Movies and TV shows available under the {{ rating }} rating category.</p>
         <a href="{% url 'Collection' %}" class="btn btn-red mt-3">Back To Collection</a>
       </div>
@@ -23,15 +24,15 @@
               <div class="movie-poster rating-card-{{ count }}">
                   <i class="fa-solid fa-film"></i>
                   <div class="movie-poster-meta">
-                      <span class="poster-rating">{{ movie.Rating }}</span>
+                      <span class="poster-rating">{{ movie.rating }}</span>
                       <span class="poster-duration">
                           <i class="fa-regular fa-clock"></i>
-                          {{ movie.Duration }}
+                          {{ movie.duration }}
                       </span>
                   </div>
               </div>
               <div class="movie-content">
-                <h4>{{ movie.Title|title }}</h4>
+                <h4>{{ movie.title|title }}</h4>
                 <p>{{ movie.Listed_In|default:"Netflix Content" }}</p>
               </div>
             </div>

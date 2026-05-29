@@ -133,13 +133,13 @@ def filtermovies(request, filter_name):
 
 def ratingmovies(request, filter_name, rating):
     try:
-        # e = data[data[filter_name] == rating].to_dict('records')
-        movies = data[data[filter_name.lower()] == rating].to_dict('records')
+        filter_name = filter_name.lower()
+        movies = data[data[filter_name] == rating].to_dict('records')
         context = {
             'tab': 'Collection',
             'rating': rating,
             'movies': movies,
-            'count' : list(data[filter_name.lower()].unique()).index(rating) + 1,
+            'count' : list(data[filter_name].unique()).index(rating) + 1,
             'no' : len(movies)
         }
         return render(request, 'rating.html', context)

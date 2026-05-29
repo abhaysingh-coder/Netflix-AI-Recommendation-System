@@ -30,7 +30,7 @@
         {% for movie in movies %}
 
           <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-            <a href="{% url 'RatingMovies' filter|title movie %}" class="rating-link">
+            <a href="{% url 'RatingMovies' filter_name|title movie %}" class="rating-link">
               <div class="collection-rating-card rating-card-{% cycle '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' %}">
 
                 <div class="rating-icon">

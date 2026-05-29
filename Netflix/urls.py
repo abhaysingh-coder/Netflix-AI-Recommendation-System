@@ -28,4 +28,5 @@ urlpatterns = [
     path('Collection/', views.collection, name='Collection'),
     path('Collection/<str:filter_name>', views.filtermovies, name='FilterMovies'),
     path('Collection/<str:filter_name>/<str:rating>', views.ratingmovies, name='RatingMovies'),
+    path('Collection/<str:filter_name>/<str:rating>/<str:movies_name_url>', views.profile, name='Profile'),
 ]

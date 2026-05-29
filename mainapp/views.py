@@ -20,6 +20,10 @@ def load_model():
             urllib.request.urlretrieve(url, MODEL_PATH)
         similarity_matrix = joblib.load(MODEL_PATH)
         data = pd.read_csv(DATA_PATH)
+        data['url_title'] = data['title'].str.replace(' ', '_')
+        data['url_title'] = data['url_title'].str.replace('/', '-')
+        data['date_added'] = pd.to_datetime(data['date_added'], format='%m/%d/%Y')
+        data['date_added'] = data['date_added'].dt.strftime('%d-%b-%Y')
         return similarity_matrix, data, None
     except Exception as e:
         print("Model loading error:", e)
@@ -104,6 +108,7 @@ def history(request):
 def collection(request):
     try:
         filters = ['type', 'director', 'country', 'release_year', 'rating']
+        filter_url =['url_type', 'director', 'country', 'release_year', 'rating']
         filter_data = {}
         for filter_name in filters:
             values = (data[filter_name].dropna().astype(str).unique().tolist())
@@ -137,11 +142,23 @@ def ratingmovies(request, filter_name, rating):
         movies = data[data[filter_name] == rating].to_dict('records')
         context = {
             'tab': 'Collection',
+            'filter_name' : filter_name,
             'rating': rating,
             'movies': movies,
             'count' : list(data[filter_name].unique()).index(rating) + 1,
             'no' : len(movies)
         }
         return render(request, 'rating.html', context)
+    except Exception as e:
+        return render(request, 'error.html', {'error': e})
+    
+def profile(request, filter_name, rating, movies_name_url):
+    try:
+        context = {
+            'filter_name' : filter_name.lower(),
+            'rating' : rating,
+            'movied_detail' : data[data['url_title'] == movies_name_url].to_dict('records')
+        }
+        return render(request, 'profile.html', context)
     except Exception as e:
         return render(request, 'error.html', {'error': e})

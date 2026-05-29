@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+{% for movie in movied_detail %}
+
+<section class="movie-view-page">
+
+    <div class="container">
+
+        <div class="movie-view-card">
+
+            <div class="movie-view-poster-area">
+                <div class="movie-view-poster rating-card-1">
+                    <i class="fa-solid fa-clapperboard"></i>
+                </div>
+            </div>
+
+            <div class="movie-view-content">
+                <h1>{{ movie.title }}</h1>
+                <p class="movie-view-description">{{ movie.listed_in|default:"No description available." }}</p>
+
+                <div class="movie-view-meta-grid">
+                    <div class="movie-view-meta-box">
+                        <i class="fa-solid fa-tv"></i>
+                        <span>Type</span>
+                        <strong>{{ movie.type }}</strong>
+                    </div>
+                    <div class="movie-view-meta-box">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Rating</span>
+                        <strong>{{ movie.rating }}</strong>
+                    </div>
+                    <div class="movie-view-meta-box">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Duration</span>
+                        <strong>{{ movie.duration }}</strong>
+                    </div>
+                    <div class="movie-view-meta-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Year</span>
+                        <strong>{{ movie.release_year }}</strong>
+                    </div>
+                </div>
+
+                <div class="movie-view-info-list">
+                    <div class="movie-view-row">
+                        <span>Show ID</span>
+                        <p>{{ movie.show_id|title }}</p>
+                    </div>
+                    <div class="movie-view-row">
+                        <span>Director</span>
+                        <p>{{ movie.director|default:"Not Given" }}</p>
+                    </div>
+                    <div class="movie-view-row">
+                        <span>Country</span>
+                        <p>{{ movie.country|default:"Not Given" }}</p>
+                    </div>
+                    <div class="movie-view-row">
+                        <span>Date Added</span>
+                        <p>{{ movie.date_added|default:"Not Given" }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endfor %}
+
+{% endblock %}

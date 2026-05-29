@@ -8,11 +8,11 @@
       <div class="collection-header text-center">
         <p class="small-title">
           <i class="fa-solid fa-film"></i>
-          Rating Collection
+          {{ rating }} Collection
         </p>
-        <h1>{{ rating }} Movies & Shows</h1>
+        <h1>Collection of Movies & Shows by {{ rating }}</h1>
         <p>{{ no }} Movies & Series Available</p>
-        <p>Movies and TV shows available under the {{ rating }} rating category.</p>
+        <p>Movies and TV shows available under the {{ rating }} category.</p>
         <a href="{% url 'Collection' %}" class="btn btn-red mt-3">Back To Collection</a>
       </div>
 

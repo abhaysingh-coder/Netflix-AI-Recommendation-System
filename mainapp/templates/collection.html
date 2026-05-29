@@ -12,7 +12,7 @@
         Netflix Collection
       </p>
       <h1>Browse Movies By Filters</h1>
-      <p>Select a rating category to explore movies and TV shows with the same Netflix rating.</p>
+      <p>Select a filters to explore movies and TV shows with the same Netflix Filters.</p>
     </div>
 
     {% for filter, values in filter_data.items %}
@@ -28,7 +28,7 @@
               <p>Explore Netflix {{ filter|title }} categories</p>
             </div>
             <div class="rating-card-footer">
-              <a href="{% url 'FilterMovies' filter %}" class="rating-detail-btn">
+              <a href="{% url 'FilterMovies' filter|title %}" class="rating-detail-btn">
                 Show All
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
@@ -38,7 +38,7 @@
         <swiper-container class="ratingSwiper" loop="true"  grab-cursor="true" free-mode="true" mousewheel="true" autoplay-delay="2500" autoplay-disable-on-interaction="false" space-between="28" breakpoints='{"0": { "slidesPerView": 1 },"576": { "slidesPerView": 2 },"768": { "slidesPerView": 3 },"1200": { "slidesPerView": 4 }}'>
           {% for rate in values %}
           <swiper-slide>
-            <a href="{% url 'RatingMovies' filter rate %}" class="rating-link">
+            <a href="{% url 'RatingMovies' filter|title rate %}" class="rating-link">
               <div class="collection-rating-card rating-card-{{ forloop.counter }}">
                 <div class="rating-icon">
                   <i class="fa-solid fa-star"></i>

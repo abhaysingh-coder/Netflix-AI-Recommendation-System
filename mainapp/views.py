@@ -16,7 +16,7 @@ DATA_PATH = os.path.join(BASE_DIR, 'Data.csv')
 def load_model():
     try:
         if not os.path.exists(MODEL_PATH):
-            url = 'https://huggingface.co/abhaysinghsrinet/similarity_matrix/resolve/main/similarity_matrix.pkl'
+            url = 'https://huggingface.co/abhaysinghsrinet/Movies-Recommandation-Similarity-Matrix/resolve/main/similarity_matrix.pkl'
             urllib.request.urlretrieve(url, MODEL_PATH)
         similarity_matrix = joblib.load(MODEL_PATH)
         data = pd.read_csv(DATA_PATH)
